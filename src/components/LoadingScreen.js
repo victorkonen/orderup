@@ -10,10 +10,6 @@ const styles = StyleSheet.create({
 const LoadingScreen = ({ navigation }) => (
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <Text>Loading Screen</Text>
-    <Button
-      onPress={() => navigation.navigate('Info')}
-      title="Go to info"
-    />
   </View>
 );
 
