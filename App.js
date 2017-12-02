@@ -1,23 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-import Welcome from "./components/Welcome";
+import AppReducer from './src/reducers';
+import AppWithNavigationState from './src/navigators/AppNavigator';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+class App extends React.Component {
+  store = createStore(AppReducer);
 
-export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Welcome />
-      </View>
+      <Provider store={this.store}>
+        <AppWithNavigationState />
+      </Provider>
     );
   }
 }
+
+AppRegistry.registerComponent('App', () => App);
+
+export default App;
